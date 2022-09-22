@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
@@ -13,8 +13,11 @@ declare let alertify: any;
 })
 export class LoginComponent implements OnInit {
 
+  @ViewChild('closebutton') closebutton: any;
+
 
   frmLogin!: FormGroup;
+  frmRegister!: FormGroup;
 
   constructor(private loginService: LoginService,
     private formBuilder: FormBuilder,
@@ -24,6 +27,13 @@ export class LoginComponent implements OnInit {
     this.frmLogin = this.formBuilder.group({
       id_usuario: '',
       password: '',
+    });
+
+    this.frmRegister = this.formBuilder.group({
+      id_usuario: '',
+      email: '',
+      password: '',
+      password_confirmation: ''
     });
   }
 
@@ -41,6 +51,16 @@ export class LoginComponent implements OnInit {
         this.frmLogin.get('password')?.setValue('');
       }
     });
+  }
+
+  registerUser(): void {
+
+    this.loginService.register(this.frmRegister.value).subscribe(response => {
+      if (response.user) {
+        alertify.success("Usuario Registrado Correctamente");
+        this.closebutton.nativeElement.click();
+      }
+    })
   }
 
 }

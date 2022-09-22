@@ -28,7 +28,6 @@ export class TemplateComponent implements OnInit {
 
 
   selectedCategory(category: string) {
-    this.comidaTipicaService.selectedCategory2 = category;
     this.comidaTipicaService.selectedCategory.next(category);
   }
 
