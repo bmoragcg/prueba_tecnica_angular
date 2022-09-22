@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { Routes, RouterModule } from '@angular/router';
 
+import { SharedModule } from '../shared.module';
+
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,7 +20,8 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedModule
   ]
 })
 export class PublicModule { }

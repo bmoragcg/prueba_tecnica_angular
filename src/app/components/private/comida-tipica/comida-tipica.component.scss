@@ -1,0 +1,69 @@
+.contentCard {
+    padding-left: 0;
+}
+
+.starCalifcacion {
+    position: relative;
+    display: inline-block;
+    font-size: 1.5rem;
+    color: #d3d3d3;
+}
+
+.filled {
+    color: #2bebc8;
+}
+
+.bad {
+    color: #deb0b0;
+}
+
+.filled.bad {
+    color: #ff1e1e;
+}
+
+.half {
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+    color: red;
+}
+
+.like {
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+
+
+.like.active {
+    animation: like 0.5s 1;
+    color: red;
+}
+
+.like {
+    fill: transparent;
+    stroke: black;
+    stroke-width: 30;
+    transition: all 0.5s;
+}
+
+@keyframes like {
+    0% {
+        transform: scale(1);
+    }
+
+    90% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+.input {
+    color: #545454;
+    background-color: #f4f4f4;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+}

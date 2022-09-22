@@ -1,11 +1,12 @@
 import { Routes } from '@angular/router';
-import { ComidaTipicaComponent } from '../private/comida-tipica/comida-tipica.component';
 
 export const SIDEBAR_ROUTES: Routes = [
   {
     path: 'comida-tipica',
-    component: ComidaTipicaComponent
-    
+    loadChildren: () =>
+      import(
+        'src/app/components/private/comida-tipica/comida-tipica.module'
+      ).then((m) => m.ComidaTipicaModule),
   },
   // { path: '', redirectTo: '/administrativo' },
   // { path: '**', redirectTo: '/Public/Not-Found' }

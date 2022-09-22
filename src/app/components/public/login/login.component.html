@@ -1,32 +1,32 @@
-
 <div class="overlay">
 
-    <div class="main-body d-flex align-items-center" > 
-        <div class="container-fluid card d-flex justify-content-center align-items-lg-center">
-            <form >
-                <h1>INICIAR SESIÓN</h1> 
-<div class="mb-3">
-            <div class="container-input">
-              <input type="text" class="form-control ui-input" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Usuario" autocomplete="off" formControlName="id_usuario" />
-            </div>
+  <div class="main-body d-flex align-items-center">
+    <div class="container-fluid card d-flex justify-content-center align-items-lg-center">
+      <form [formGroup]="frmLogin">
+        <h1>INICIAR SESIÓN</h1>
+        <div class="mb-3">
+          <div class="container-input">
+            <input type="text" class="form-control ui-input" id="exampleInputEmail1" aria-describedby="emailHelp"
+              placeholder="Usuario" autocomplete="off" formControlName="id_usuario" />
           </div>
-
-          <div class="mb-3">
-            <div class="container-input">
-              <input type="password" class="form-control ui-input" id="exampleInputPassword1" placeholder="Contraseña"
-                autocomplete="off" formControlName="password" />
-            </div>
-          </div>
-
-          <div class="container-button">
-            <button type="submit" class="ui-btn">
-              INICIAR SESIÓN
-            </button>
-          </div>
-            </form>
-            <a class="ui-link mt-3" data-bs-toggle="modal" data-bs-target="#recuperarContraseñaModal">¿NO TIENES CUENTA? <b style="color: #0dcdfe">REGISTRATE</b>
-              </a>
         </div>
+
+        <div class="mb-3">
+          <div class="container-input">
+            <input type="password" class="form-control ui-input" id="exampleInputPassword1" placeholder="Contraseña"
+              autocomplete="off" formControlName="password" />
+          </div>
+        </div>
+
+        <div class="container-button">
+          <button type="submit" class="ui-btn" (click)="signIn()">
+            INICIAR SESIÓN
+          </button>
+        </div>
+      </form>
+      <a class="ui-link mt-3" data-bs-toggle="modal" data-bs-target="#recuperarContraseñaModal">¿NO TIENES CUENTA? <b
+          style="color: #0dcdfe">REGISTRATE</b>
+      </a>
     </div>
+  </div>
 </div>

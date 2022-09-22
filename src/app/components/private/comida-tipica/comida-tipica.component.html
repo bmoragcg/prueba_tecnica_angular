@@ -1,1 +1,74 @@
-<p>comida-tipica works!</p>
+<div class="prueba" style="margin: 40px;">
+
+    <div class="row">
+        <div class="col-lg-3 col-sm-12">
+            <input type="text" class="form-control input" placeholder="Buscar comida" [(ngModel)]="seacrhByNombre">
+        </div>
+
+        <div class="col-lg-3 col-sm-12">
+            <button type="button" class="btn btn-success" (click)="searchPlato()">Buscar</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="d-flex" style="list-style: none;">
+                <li *ngFor="let item of listTags">
+                    <button type="button" class="btn btn-primary mt-3 me-2"
+                        (click)="seacrhByNombre = item.nombre">{{item.nombre}}</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-between contentCard">
+        <ng-container *ngFor="let item of listFood | slice:pagina:mostrar; let i = index">
+            <div class="card mb-3 me-4 p-0" style="max-width: 540px;" (click)="urlImage = item.strMealThumb">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{item.strMealThumb}}" style="cursor: pointer;" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{item.strMeal}}</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional
+                                content. This content is a little bit longer.</p>
+
+                            <div class="d-flex justify-content-between">
+                                <ngb-rating [max]="5" [(rate)]="selectedEstrellas">
+                                    <ng-template let-fill="fill" let-index="index">
+                                        <span class="starCalifcacion" [class.filled]="fill === 100">&#9733;</span>
+                                    </ng-template>
+                                </ngb-rating>
+                                <i class="fa-solid fa-heart like" id="like-{{i}}" (click)="meGusta(i)"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+        <div>
+            <div class="float-end">
+                <button class="btn btn-primary me-3" data-augmented-ui="border" (click)="paginadorAnteriorPrincipal()">
+                    Anterior
+                </button>
+
+                <button class="btn  btn-primary" data-augmented-ui="border" (click)="paginadorSiguientePrincipal()">
+                    Siguiente
+                </button>
+                <div class="totalPagina">Pagina {{mostrar / 5}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <img [src]="urlImage" alt="">
+        </div>
+    </div>
+</div>
